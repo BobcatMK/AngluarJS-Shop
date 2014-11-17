@@ -27,8 +27,13 @@ angular.module("cart", [])
             removeProduct: function(id) {
                 for (var i = 0; i < cartData.length; i++) {
                     if (cartData[i].id == id) {
-                        cartData.splice(i, 1);
-                        break;
+                        if (cartData[i].count < 2) {
+                            cartData.splice(i, 1);
+                            break;
+                        } else {
+                            cartData[i].count -= 1
+                            break;
+                        }
                     }
                 }
             },
